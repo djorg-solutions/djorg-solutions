@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
-
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
         textTransform: 'uppercase',
         fontSize: '16px',
         padding: '0 12px',
-        '&:hover':{
+        '&:hover': {
             color: '#49c0b6'
         }
     },
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#49c0b6',
         color: 'white',
         textTransform: 'uppercase',
-        '&:hover':{
+        '&:hover': {
             backgroundColor: '#124f8f'
         }
     },
@@ -43,16 +43,22 @@ function Layout({ children }) {
 
     const classes = useStyles();
 
+    const trigger = useScrollTrigger({
+        disableHysteresis: true,
+        threshold: 200,
+        target: process.browser ? window : undefined,
+    });
+
     return (
         <>
             <div className={classes.root}>
-                <AppBar position="fixed" color={'transparent'} style={{ boxShadow: 'none', color: 'white' }}>
+                <AppBar position="fixed" color={trigger?'primary':'transparent'} style={{ boxShadow: 'none', color: 'white' }}>
                     <Toolbar>
                         <Grid container spacing={1}>
                             <Grid item xs={3}>
                                 <Typography variant="h6" className={classes.title}>
                                     D'JORG SOLUTIONS
-                          </Typography>
+                                </Typography>
                             </Grid>
                             <Grid item xs={5}>
                                 <Hidden smDown>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography, Button, Hidden } from '@material-ui/core';
+import { Grid, Typography, Button, Hidden, Box } from '@material-ui/core';
 import ParticleField from 'react-particles-webgl';
 import { config } from '../constant/particle.config';
 import clsx from 'clsx';
@@ -24,6 +24,13 @@ const useStyles = makeStyles((theme) => ({
         marginTop: '3em',
         padding: '15px',
         borderRadius: '8px'
+    },
+    bannerButtonMobile: {
+        marginRight: '2em',
+        marginTop: '3em',
+        padding: '8px',
+        borderRadius: '8px',
+        fontSize: '12px'
     },
     moreButton: {
         backgroundColor: '#49c0b6',
@@ -52,13 +59,13 @@ function Banner() {
 
     const classes = useStyles();
 
-    const BannerImage = () => <Image src={'/banner-round.png'} width={400} height={400} className={classes.bannerImage} />;
-    const BannerButtons = () => <>
-        <Button variant={'contained'} className={clsx(classes.bannerButton, classes.moreButton)}>{'Read More'}</Button>
-        <Button variant={'outlined'} className={clsx(classes.bannerButton, classes.serviceButton)}>{'Our Service'}</Button>
+    const BannerImage = ({ width, height }) => <Image src={'/banner-round.png'} width={width} height={height} className={classes.bannerImage} />;
+    const BannerButtons = ({isMobile}) => <>
+        <Button variant={'contained'} className={clsx(isMobile?classes.bannerButton:classes.bannerButtonMobile, classes.moreButton)}>{'Read More'}</Button>
+        <Button variant={'outlined'} className={clsx(isMobile?classes.bannerButton:classes.bannerButtonMobile, classes.serviceButton)}>{'Our Service'}</Button>
     </>;
-    const BannerPrimaryText = () => <Typography variant={'h3'}>{'Doing the right thing, at the right time.'}</Typography>;
-    const BannerSecondaryText = () => <Typography variant={'subtitle1'} style={{ fontSize: '16px', lineHeight: '28px' }}>{'Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, excepturi. Distinctio accusantium fugit odit? Fugit ipsam nostrum minus alias, expedita voluptatem illo quis id eos quae odio, nobis deleniti delectus? Lorem ipsum dolor sit amet consectetur adipisicing elit.'}</Typography>;
+    const BannerPrimaryText = ({isMobile}) => <Typography variant={isMobile ? 'h6' : 'h3'}>{'Doing the right thing, at the right time.'}</Typography>;
+    const BannerSecondaryText = ({isMobile}) => <Typography variant={'subtitle1'} style={isMobile ? { fontSize: '12px', lineHeight: '20px' } : { fontSize: '16px', lineHeight: '28px' }}>{'Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, excepturi. Distinctio accusantium fugit odit? Fugit ipsam nostrum minus alias, expedita voluptatem illo quis id eos quae odio, nobis deleniti delectus? Lorem ipsum dolor sit amet consectetur adipisicing elit.'}</Typography>;
 
 
     return (
@@ -66,40 +73,44 @@ function Banner() {
 
             <ParticleField config={config} />
 
-            <Grid container className={classes.bannerContainer}>
+            <Grid container className={classes.bannerContainer} justify={'center'}>
                 <Grid item md={7} sm={12}>
                     <Hidden smDown>
                         <Grid container>
-                            <Grid item xs={12}>
-                                <BannerPrimaryText />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <BannerSecondaryText />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <BannerButtons />
-                            </Grid>
+                            <Box mt={6}>
+                                <Grid item xs={12}>
+                                    <BannerPrimaryText />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <BannerSecondaryText />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <BannerButtons isMobile/>
+                                </Grid>
+                            </Box>
                         </Grid>
                     </Hidden>
                     <Hidden mdUp>
                         <Grid container justify={'center'}>
-                            <BannerImage />
+                        <Box mt={-6}>
+                            <BannerImage width={200} height={200} />
+                        </Box>
                         </Grid>
                     </Hidden>
                 </Grid>
                 <Grid item md={5} sm={12}>
                     <Hidden smDown>
                         <Grid container justify={'flex-end'}>
-                            <BannerImage />
+                            <BannerImage width={400} height={400} />
                         </Grid>
                     </Hidden>
                     <Hidden mdUp>
                         <Grid container>
                             <Grid item xs={12}>
-                                <BannerPrimaryText />
+                                <BannerPrimaryText isMobile/>
                             </Grid>
                             <Grid item xs={12}>
-                                <BannerSecondaryText />
+                                <BannerSecondaryText isMobile/>
                             </Grid>
                             <Grid item xs={12}>
                                 <BannerButtons />
