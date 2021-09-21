@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Box, Typography, useMediaQuery } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Image from 'next/image'
+import Image from 'next/image';
 
 const useStyles = makeStyles(() => ({
     titleMain:{

@@ -73,7 +73,7 @@ function Layout({ children }) {
                                             {'Service'}
                                         </Button>
                                         <Button href="#" className={classes.menuButton}>
-                                            {'Contact'}
+                                            {'Projects'}
                                         </Button>
                                     </Grid>
                                 </Hidden>
