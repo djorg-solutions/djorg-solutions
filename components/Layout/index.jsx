@@ -10,6 +10,7 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+import MenuDialog from './components/MenuDialog';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -59,6 +60,14 @@ function Layout({ children }) {
         target: process.browser ? window : undefined,
     });
 
+    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+    const handleMenu = () => {
+        setIsMenuOpen(true);
+    };
+
+    const closeMenu = () => setIsMenuOpen(false);
+
     return (
         <>
             <div className={classes.root}>
@@ -94,7 +103,7 @@ function Layout({ children }) {
                                         <Button variant={'contained'} className={classes.languageButton} color="inherit">Language</Button>
                                     </Hidden>
                                     <Hidden mdUp>
-                                        <IconButton className={classes.menuIcon}>
+                                        <IconButton className={classes.menuIcon} onClick={handleMenu}>
                                             <MenuIcon fontSize={'large'} />
                                         </IconButton>
                                     </Hidden>
@@ -113,6 +122,7 @@ function Layout({ children }) {
                     </IconButton>
                 </a>
             }
+            { isMenuOpen && <MenuDialog open={isMenuOpen} handleClose={closeMenu} />}
         </>
     );
 }
