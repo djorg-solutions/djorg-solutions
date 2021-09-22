@@ -33,7 +33,7 @@ function About() {
     const isMobile = useMediaQuery(breakpoints.down('md'));
 
     return (
-        <Box p={isMobile?2:10}>
+        <Box p={isMobile?2:10} id="about">
             <Grid container>
                 <Grid xs={12} md={6} item>
                     <Box p={2}>

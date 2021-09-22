@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
@@ -37,6 +38,15 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: '#124f8f'
         }
     },
+    backToTop: {
+        position: 'fixed',
+        bottom: 10,
+        right: 10,
+        backgroundColor: '#124f8f',
+        '&:hover': {
+            backgroundColor: '#1e7ba8'
+        }
+    }
 }));
 
 function Layout({ children }) {
@@ -52,7 +62,7 @@ function Layout({ children }) {
     return (
         <>
             <div className={classes.root}>
-                <AppBar position="fixed" color={trigger?'primary':'transparent'} style={{ boxShadow: 'none', color: 'white' }}>
+                <AppBar position="fixed" color={trigger ? 'primary' : 'transparent'} style={{ boxShadow: 'none', color: 'white' }}>
                     <Toolbar>
                         <Grid container spacing={1}>
                             <Grid item xs={3}>
@@ -66,13 +76,13 @@ function Layout({ children }) {
                                         <Button href="#" className={classes.menuButton}>
                                             {'Home'}
                                         </Button>
-                                        <Button href="#" className={classes.menuButton}>
+                                        <Button href="#about" className={classes.menuButton}>
                                             {'About'}
                                         </Button>
-                                        <Button href="#" className={classes.menuButton}>
+                                        <Button href="#services" className={classes.menuButton}>
                                             {'Service'}
                                         </Button>
-                                        <Button href="#" className={classes.menuButton}>
+                                        <Button href="#projects" className={classes.menuButton}>
                                             {'Projects'}
                                         </Button>
                                     </Grid>
@@ -95,6 +105,14 @@ function Layout({ children }) {
                 </AppBar>
             </div>
             {children}
+            {
+                trigger &&
+                <a href="#">
+                    <IconButton className={classes.backToTop}>
+                        <ExpandLessIcon fontSize="default" style={{ color: 'white' }} />
+                    </IconButton>
+                </a>
+            }
         </>
     );
 }

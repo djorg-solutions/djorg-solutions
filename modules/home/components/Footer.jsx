@@ -17,7 +17,7 @@ const Footer = () => {
 
     return (
         <footer className={classes.footer}>
-            <Typography>{`© ${new Date().getFullYear()} D'JorG Solutions . All Rights Reserved. Design by D'JorG Solutions`}</Typography>
+            <Typography>{`© ${new Date().getFullYear()} D'JorG Solutions. All Rights Reserved. Design by D'JorG Solutions`}</Typography>
         </footer>
     );
 }
