@@ -11,6 +11,14 @@ import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import MenuDialog from './components/MenuDialog';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Grow from '@material-ui/core/Grow';
+import Paper from '@material-ui/core/Paper';
+import Popper from '@material-ui/core/Popper';
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
+import { useRouter } from 'next/router';
+import { useTranslate } from '../../providers/I18n';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -39,6 +47,9 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: '#124f8f'
         }
     },
+    languageOption: {
+        textTransform: 'uppercase'
+    },
     backToTop: {
         position: 'fixed',
         bottom: 10,
@@ -53,6 +64,8 @@ const useStyles = makeStyles((theme) => ({
 function Layout({ children }) {
 
     const classes = useStyles();
+    const i18n = useTranslate();
+    const router = useRouter();
 
     const trigger = useScrollTrigger({
         disableHysteresis: true,
@@ -64,6 +77,33 @@ function Layout({ children }) {
 
     const handleMenu = () => {
         setIsMenuOpen(true);
+    };
+
+    const [open, setOpen] = React.useState(false);
+    const anchorRef = React.useRef(null);
+
+    function handleListKeyDown(event) {
+        if (event.key === 'Tab') {
+            event.preventDefault();
+            setOpen(false);
+        }
+    }
+
+    const handleToggle = () => {
+        setOpen((prevOpen) => !prevOpen);
+    };
+
+    const handleClose = (event) => {
+        if (anchorRef.current && anchorRef.current.contains(event.target)) {
+            return;
+        }
+
+        setOpen(false);
+    };
+
+    const changeLanguage = lang => {
+        setIsMenuOpen(false);
+        router.push(router.asPath, router.asPath, { locale: lang });
     };
 
     const closeMenu = () => setIsMenuOpen(false);
@@ -83,16 +123,16 @@ function Layout({ children }) {
                                 <Hidden smDown>
                                     <Grid container justify={'center'}>
                                         <Button href="#" className={classes.menuButton}>
-                                            {'Home'}
+                                            {i18n.t('menu.home')}
                                         </Button>
                                         <Button href="#about" className={classes.menuButton}>
-                                            {'About'}
+                                            {i18n.t('menu.about')}
                                         </Button>
                                         <Button href="#services" className={classes.menuButton}>
-                                            {'Service'}
+                                            {i18n.t('menu.service')}
                                         </Button>
                                         <Button href="#projects" className={classes.menuButton}>
-                                            {'Projects'}
+                                            {i18n.t('menu.projects')}
                                         </Button>
                                     </Grid>
                                 </Hidden>
@@ -100,7 +140,34 @@ function Layout({ children }) {
                             <Grid item xs={4}>
                                 <Grid container justify={'flex-end'}>
                                     <Hidden smDown>
-                                        <Button variant={'contained'} className={classes.languageButton} color="inherit">Language</Button>
+                                        <Button
+                                            ref={anchorRef}
+                                            aria-controls={open ? 'menu-list-grow' : undefined}
+                                            aria-haspopup="true"
+                                            onClick={handleToggle}
+                                            variant={'contained'}
+                                            className={classes.languageButton}
+                                            color="inherit"
+                                        >
+                                            {router.locale === 'es' ? 'Español' : 'English'}
+                                        </Button>
+                                        <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+                                            {({ TransitionProps, placement }) => (
+                                                <Grow
+                                                    {...TransitionProps}
+                                                    style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+                                                >
+                                                    <Paper>
+                                                        <ClickAwayListener onClickAway={handleClose}>
+                                                            <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                                                                <MenuItem className={classes.languageOption} onClick={() => changeLanguage('es')}>{'Español'}</MenuItem>
+                                                                <MenuItem className={classes.languageOption} onClick={() => changeLanguage('en')}>{'English'}</MenuItem>
+                                                            </MenuList>
+                                                        </ClickAwayListener>
+                                                    </Paper>
+                                                </Grow>
+                                            )}
+                                        </Popper>
                                     </Hidden>
                                     <Hidden mdUp>
                                         <IconButton className={classes.menuIcon} onClick={handleMenu}>
@@ -122,7 +189,7 @@ function Layout({ children }) {
                     </IconButton>
                 </a>
             }
-            { isMenuOpen && <MenuDialog open={isMenuOpen} handleClose={closeMenu} />}
+            {isMenuOpen && <MenuDialog open={isMenuOpen} handleClose={closeMenu} changeLanguage={changeLanguage} locale={router.locale} />}
         </>
     );
 }
