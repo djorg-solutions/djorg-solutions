@@ -5,6 +5,8 @@ import ParticleField from 'react-particles-webgl';
 import { config } from '../constant/particle.config';
 import clsx from 'clsx';
 import Image from 'next/image'
+import { useTranslate } from '../../../providers/I18n';
+
 
 const useStyles = makeStyles((theme) => ({
     banner: {
@@ -57,15 +59,16 @@ const useStyles = makeStyles((theme) => ({
 
 function Banner() {
 
+    const i18n = useTranslate();
     const classes = useStyles();
 
     const BannerImage = ({ width, height }) => <Image src={'/banner-round.png'} width={width} height={height} className={classes.bannerImage} />;
     const BannerButtons = ({isMobile}) => <>
-        <Button variant={'contained'} className={clsx(isMobile?classes.bannerButton:classes.bannerButtonMobile, classes.moreButton)}>{'Read More'}</Button>
-        <Button variant={'outlined'} className={clsx(isMobile?classes.bannerButton:classes.bannerButtonMobile, classes.serviceButton)}>{'Our Service'}</Button>
+        <Button href="#about" variant={'contained'} className={clsx(isMobile?classes.bannerButton:classes.bannerButtonMobile, classes.moreButton)}>{i18n.t('bannerSeeMoreButton')}</Button>
+        <Button href="#services" variant={'outlined'} className={clsx(isMobile?classes.bannerButton:classes.bannerButtonMobile, classes.serviceButton)}>{i18n.t('bannerServicesButton')}</Button>
     </>;
-    const BannerPrimaryText = ({isMobile}) => <Typography variant={isMobile ? 'h6' : 'h3'}>{'Doing the right thing, at the right time.'}</Typography>;
-    const BannerSecondaryText = ({isMobile}) => <Typography variant={'subtitle1'} style={isMobile ? { fontSize: '12px', lineHeight: '20px' } : { fontSize: '16px', lineHeight: '28px' }}>{'Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, excepturi. Distinctio accusantium fugit odit? Fugit ipsam nostrum minus alias, expedita voluptatem illo quis id eos quae odio, nobis deleniti delectus? Lorem ipsum dolor sit amet consectetur adipisicing elit.'}</Typography>;
+    const BannerPrimaryText = ({isMobile}) => <Typography variant={isMobile ? 'h6' : 'h3'}>{i18n.t('bannerPrimaryText')}</Typography>;
+    const BannerSecondaryText = ({isMobile}) => <Typography variant={'subtitle1'} style={isMobile ? { fontSize: '12px', lineHeight: '20px' } : { fontSize: '16px', lineHeight: '28px' }}>{i18n.t('bannerSecondaryText')}</Typography>;
 
 
     return (

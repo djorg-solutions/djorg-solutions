@@ -103,6 +103,7 @@ function Layout({ children }) {
 
     const changeLanguage = lang => {
         setIsMenuOpen(false);
+        setOpen(false);
         router.push(router.asPath, router.asPath, { locale: lang });
     };
 
