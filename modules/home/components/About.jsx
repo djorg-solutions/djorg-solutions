@@ -2,6 +2,8 @@ import React from 'react';
 import { Grid, Box, Typography, useMediaQuery } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Image from 'next/image';
+import { useTranslate } from '../../../providers/I18n';
+
 
 const useStyles = makeStyles(() => ({
     titleMain:{
@@ -28,6 +30,7 @@ const useStyles = makeStyles(() => ({
 
 function About() {
 
+    const i18n = useTranslate();
     const classes = useStyles();
     const {breakpoints} = useTheme();
     const isMobile = useMediaQuery(breakpoints.down('md'));
@@ -37,9 +40,9 @@ function About() {
             <Grid container>
                 <Grid xs={12} md={6} item>
                     <Box p={2}>
-                        <Typography variant={'h4'} className={classes.titleMain}>{'About Us'}</Typography>
-                        <Typography variant={'h6'} className={classes.text1}>{'Business planning, Strategy and Execution. A problem-solving philosophy that leads to products people actually want to use.'}</Typography>
-                        <Typography variant={'body2'} className={classes.text2}>{'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi recusandae, ducimus vel rerum accusamus odit provident nobis ratione quisquam obcaecati atque fuga maiores! Tenetur aspernatur alias unde facilis eveniet? Eius! Lorem ipsum dolor sit amet, Fugit ipsam nostrum minus alias, expedita.'}</Typography>
+                        <Typography variant={'h4'} className={classes.titleMain}>{i18n.t('aboutUsTitle')}</Typography>
+                        <Typography variant={'h6'} className={classes.text1}>{i18n.t('aboutUsPrimaryText')}</Typography>
+                        <Typography variant={'body2'} className={classes.text2}>{i18n.t('aboutUsSecondaryText')}</Typography>
                     </Box>
                 </Grid>
                 <Grid xs={12} md={6} item>
