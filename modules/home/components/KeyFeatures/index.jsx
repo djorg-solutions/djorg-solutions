@@ -55,32 +55,32 @@ const KeyFeatures = () => {
                             <CardKey
                                 color={"#ff0000"}
                                 icon={<CloudDoneIcon fontSize={'large'} style={{ color: '#ff0000' }} />}
-                                primaryText={'Data Backup'}
-                                secondaryText={'Lorem ipsum dolor sit amet, dolor elit, sed eiusmod tempor init sit.'}
+                                primaryText={i18n.t('key1PrimaryText')}
+                                secondaryText={i18n.t('key1SecondaryText')}
                             />
                         </Grid>
                         <Grid item xs={12} md={6}>
                         <CardKey
                                 color={"#89ba16"}
                                 icon={<GroupIcon fontSize={'large'} style={{ color: '#89ba16' }} />}
-                                primaryText={'Dedicated team'}
-                                secondaryText={'Lorem ipsum dolor sit amet, dolor elit, sed eiusmod tempor init sit.'}
+                                primaryText={i18n.t('key2PrimaryText')}
+                                secondaryText={i18n.t('key2SecondaryText')}
                             />
                         </Grid>
                         <Grid item xs={12} md={6}>
                         <CardKey
                                 color={"#0077c8"}
                                 icon={<TimelapseIcon fontSize={'large'} style={{ color: '#0077c8' }} />}
-                                primaryText={'Quality deliverance'}
-                                secondaryText={'Lorem ipsum dolor sit amet, dolor elit, sed eiusmod tempor init sit.'}
+                                primaryText={i18n.t('key3PrimaryText')}
+                                secondaryText={i18n.t('key3SecondaryText')}
                             />
                         </Grid>
                         <Grid item xs={12} md={6}>
                         <CardKey
                                 color={"#ff4f81"}
                                 icon={<LiveHelpIcon fontSize={'large'} style={{ color: '#ff4f81' }} />}
-                                primaryText={'Excellent support'}
-                                secondaryText={'Lorem ipsum dolor sit amet, dolor elit, sed eiusmod tempor init sit.'}
+                                primaryText={i18n.t('key4PrimaryText')}
+                                secondaryText={i18n.t('key4SecondaryText')}
                             />
                         </Grid>
                     </Grid>

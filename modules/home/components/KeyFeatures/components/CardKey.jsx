@@ -27,7 +27,7 @@ const CardKey = ({ color, icon, primaryText, secondaryText }) => {
                         </Grid>
                         <Grid item xs={10}>
                             <Typography variant={'h6'}><strong>{primaryText}</strong></Typography>
-                            <Typography variant={'body1'} style={{ marginTop: '1em' }}>{secondaryText}</Typography>
+                            <Typography variant={'body1'} style={{ marginTop: '0.2em' }}>{secondaryText}</Typography>
                         </Grid>
                     </Grid>
                 </Box>
