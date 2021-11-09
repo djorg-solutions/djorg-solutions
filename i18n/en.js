@@ -21,4 +21,14 @@ export const eng = {
     key3SecondaryText:'Delivering reliable, high-quality software is our priority for us.',
     key4PrimaryText:'Excellent support',
     key4SecondaryText:'Lifetime support service, guaranteeing you a better use of our products.',
+    bannerBottomPrimaryTitle: 'Some of Our Company Real Facts.',
+    factAppsText:'apps',
+    factClientsText:'clients',
+    factWebText:'web design',
+    servicesTitle: 'Services we offer',
+    service1Description: 'Web design and development',
+    service2Description: 'Mobile app development',
+    service3Description: 'ReactJS template',
+    service4Description: `API development`,
 }
+

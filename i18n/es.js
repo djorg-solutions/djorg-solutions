@@ -21,4 +21,13 @@ export const esp = {
     key3SecondaryText:'Para nosotros la entrega de un software confiable de alta calidad es nuestra prioridad.',
     key4PrimaryText:'Soporte excelente',
     key4SecondaryText:'Servicio de soporte de por vida, garantizándole un mayor provecho de nuestros productos.',
+    bannerBottomPrimaryTitle: 'Algunos de los hechos reales de nuestra empresa.',
+    factAppsText:'aplicaciones',
+    factClientsText:'clientes',
+    factWebText:'diseños web',
+    servicesTitle: 'Nuestros servicios',
+    service1Description: 'Aplicaciones web',
+    service2Description: 'Aplicaciones móviles',
+    service3Description: 'Plantillas ReactJS',
+    service4Description: 'Desarrollo de API',
 }
