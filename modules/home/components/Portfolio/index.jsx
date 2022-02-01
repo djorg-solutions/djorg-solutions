@@ -2,6 +2,8 @@ import React from 'react';
 import { Grid, Box, Typography, useMediaQuery } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { LinkPreview } from '@dhaiwat10/react-link-preview';
+import { useTranslate } from '../../../../providers/I18n';
+
 
 const useStyles = makeStyles(() => ({
     titleMain: {
@@ -21,6 +23,7 @@ const useStyles = makeStyles(() => ({
 const Portfolio = () => {
 
     const classes = useStyles();
+    const i18n = useTranslate();
     const { breakpoints } = useTheme();
     const isMobile = useMediaQuery(breakpoints.down('md'));
 
@@ -29,11 +32,11 @@ const Portfolio = () => {
             <Grid container>
                 <Grid xs={12} item>
                     <Grid container justify={'center'}>
-                        <Typography variant={'h4'} className={classes.titleMain}>{'Projects'}</Typography>
+                        <Typography variant={'h4'} className={classes.titleMain}>{i18n.t('projectsTitle')}</Typography>
                     </Grid>
 
                     <Grid container justify={'center'}>
-                        <Typography variant={'body2'} className={classes.desc}>{'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour'}</Typography>
+                        <Typography variant={'body2'} className={classes.desc}>{i18n.t('projectsDescription')}</Typography>
                     </Grid>
                 </Grid>
                 <Grid xs={12} item>

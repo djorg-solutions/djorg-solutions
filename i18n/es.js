@@ -30,4 +30,6 @@ export const esp = {
     service2Description: 'Aplicaciones móviles',
     service3Description: 'Plantillas ReactJS',
     service4Description: 'Desarrollo de API',
+    projectsTitle: 'Proyectos',
+    projectsDescription: 'Esto son algunos de nuestros principales proyectos.',
 }

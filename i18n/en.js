@@ -30,5 +30,7 @@ export const eng = {
     service2Description: 'Mobile app development',
     service3Description: 'ReactJS template',
     service4Description: `API development`,
+    projectsTitle: 'Projects',
+    projectsDescription: 'These are some of our main projects.',
 }
 
