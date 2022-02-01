@@ -1,6 +1,6 @@
 export const eng = {
     menu: {
-        home: 'home',
+        home: 'Home',
         about: 'About',
         service: 'Services',
         projects: 'Projects'
@@ -32,5 +32,10 @@ export const eng = {
     service4Description: `API development`,
     projectsTitle: 'Projects',
     projectsDescription: 'These are some of our main projects.',
+    contactInfoTitle: 'Contact information',
+    linksFooterTitle: 'Quick links',
+    socialFooterTitle: 'Social networks',
+    addressLabel: 'Address',
+    emailLabel: 'Email',
 }
 

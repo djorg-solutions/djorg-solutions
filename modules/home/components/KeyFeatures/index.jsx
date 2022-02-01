@@ -60,7 +60,7 @@ const KeyFeatures = () => {
                             />
                         </Grid>
                         <Grid item xs={12} md={6}>
-                        <CardKey
+                            <CardKey
                                 color={"#89ba16"}
                                 icon={<GroupIcon fontSize={'large'} style={{ color: '#89ba16' }} />}
                                 primaryText={i18n.t('key2PrimaryText')}
@@ -68,7 +68,7 @@ const KeyFeatures = () => {
                             />
                         </Grid>
                         <Grid item xs={12} md={6}>
-                        <CardKey
+                            <CardKey
                                 color={"#0077c8"}
                                 icon={<TimelapseIcon fontSize={'large'} style={{ color: '#0077c8' }} />}
                                 primaryText={i18n.t('key3PrimaryText')}
@@ -76,7 +76,7 @@ const KeyFeatures = () => {
                             />
                         </Grid>
                         <Grid item xs={12} md={6}>
-                        <CardKey
+                            <CardKey
                                 color={"#ff4f81"}
                                 icon={<LiveHelpIcon fontSize={'large'} style={{ color: '#ff4f81' }} />}
                                 primaryText={i18n.t('key4PrimaryText')}

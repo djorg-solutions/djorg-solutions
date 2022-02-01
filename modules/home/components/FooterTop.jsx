@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Grid, Typography, useMediaQuery } from '@material-ui/core';
+import { Box, Button, Grid, Typography, useMediaQuery } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -13,6 +13,8 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import Link from 'next/link';
+import { useTranslate } from '../../../providers/I18n';
+
 
 const useStyles = makeStyles(() => ({
     titleFooter: {
@@ -38,6 +40,7 @@ const useStyles = makeStyles(() => ({
 
 const FooterTop = () => {
 
+    const i18n = useTranslate();
     const classes = useStyles();
     const { breakpoints } = useTheme();
     const isMobile = useMediaQuery(breakpoints.down('md'));
@@ -48,7 +51,7 @@ const FooterTop = () => {
                 <Grid item md={6} xs={12}>
                     <Grid container>
                         <Grid item xs={12}>
-                            <Typography variant={'h4'} className={classes.titleFooter}>{'Contact information'}</Typography>
+                            <Typography variant={'h4'} className={classes.titleFooter}>{i18n.t('contactInfoTitle')}</Typography>
                         </Grid>
                         <Grid item xs={12}>
                             <List className={classes.footerList}>
@@ -58,7 +61,7 @@ const FooterTop = () => {
                                             <AddLocationIcon />
                                         </Avatar>
                                     </ListItemAvatar>
-                                    <ListItemText style={{ color: 'white' }} primary="Address" secondary={<span style={{ color: '#999' }}>{'Fort Laudardale, Florida, USA'}</span>} />
+                                    <ListItemText style={{ color: 'white' }} primary={i18n.t('addressLabel')} secondary={<span style={{ color: '#999' }}>{'Fort Laudardale, Florida, USA'}</span>} />
                                 </ListItem>
                                 <ListItem>
                                     <ListItemAvatar>
@@ -77,7 +80,7 @@ const FooterTop = () => {
                                         </Avatar>
                                     </ListItemAvatar>
                                     <a style={{ textDecoration: 'none' }} href="mailto://djorg.solutions@gmail.com">
-                                        <ListItemText style={{ color: 'white' }} primary="Email" secondary={<span style={{ color: '#999' }}>{'djorg.solutions@gmail.com'}</span>} />
+                                        <ListItemText style={{ color: 'white' }} primary={i18n.t('emailLabel')} secondary={<span style={{ color: '#999' }}>{'djorg.solutions@gmail.com'}</span>} />
                                     </a>
                                 </ListItem>
                             </List>
@@ -88,21 +91,34 @@ const FooterTop = () => {
                 <Grid md={3} xs={12} item>
                     <Grid container>
                         <Grid item xs={12}>
-                            <Typography variant={'h4'} className={classes.titleFooter}>{'Quick links'}</Typography>
+                            <Typography variant={'h4'} className={classes.titleFooter}>{i18n.t('linksFooterTitle')}</Typography>
                         </Grid>
                         <Grid item xs={12}>
                             <List className={classes.footerList}>
                                 <ListItem>
-                                    <ListItemText style={{ color: '#999' }} primary="About group" />
+                                    <Button href="#">
+                                        <ListItemText style={{ color: '#999' }} primary={i18n.t('menu.home')} />
+                                    </Button>
                                 </ListItem>
+
                                 <ListItem>
-                                    <ListItemText style={{ color: '#999' }} primary="Explore services" />
+                                    <Button href="#about">
+                                        <ListItemText style={{ color: '#999' }} primary={i18n.t('menu.about')} />
+                                    </Button>
                                 </ListItem>
+
+
                                 <ListItem>
-                                    <ListItemText style={{ color: '#999' }} primary="How does we Work?" />
+                                    <Button href="#services">
+                                        <ListItemText style={{ color: '#999' }} primary={i18n.t('menu.service')} />
+                                    </Button>
                                 </ListItem>
+
                                 <ListItem>
-                                    <ListItemText style={{ color: '#999' }} primary="View projects" />
+
+                                    <Button href="#projects">
+                                        <ListItemText style={{ color: '#999' }} primary={i18n.t('menu.projects')} />
+                                    </Button>
                                 </ListItem>
                             </List>
                         </Grid>
@@ -111,7 +127,7 @@ const FooterTop = () => {
                 <Grid md={3} xs={12} item>
                     <Grid container>
                         <Grid item xs={12}>
-                            <Typography variant={'h4'} className={classes.titleFooter}>{'Social networks'}</Typography>
+                            <Typography variant={'h4'} className={classes.titleFooter}>{i18n.t('socialFooterTitle')}</Typography>
                         </Grid>
                         <Grid item xs={12}>
                             <Link href="https://twitter.com/djorg_solutions" passHref>
@@ -121,12 +137,12 @@ const FooterTop = () => {
                             </Link>
                             <Link href="https://www.linkedin.com/" passHref>
                                 <a target="_blank">
-                                    <LinkedInIcon className={classes.socialIcon} onClick={() => goLink('')} />
+                                    <LinkedInIcon className={classes.socialIcon} />
                                 </a>
                             </Link>
                             <Link href="https://github.com/djorg-solutions" passHref>
                                 <a target="_blank">
-                                    <GitHubIcon className={classes.socialIcon} onClick={() => goLink('')} />
+                                    <GitHubIcon className={classes.socialIcon} />
                                 </a>
                             </Link>
                         </Grid>

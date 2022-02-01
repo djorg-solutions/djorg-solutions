@@ -5,6 +5,8 @@ import {useRouter} from 'next/router';
 import I18n from '../providers/I18n';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../theme/theme';
+import './app.css';
+
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;

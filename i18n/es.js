@@ -1,6 +1,6 @@
 export const esp = {
     menu: {
-        home: 'inicio',
+        home: 'Inicio',
         about: 'Nosotros',
         service: 'Servicios',
         projects: 'Proyectos'
@@ -32,4 +32,9 @@ export const esp = {
     service4Description: 'Desarrollo de API',
     projectsTitle: 'Proyectos',
     projectsDescription: 'Esto son algunos de nuestros principales proyectos.',
+    contactInfoTitle: 'Información de contacto',
+    linksFooterTitle: 'Enlaces',
+    socialFooterTitle: 'Redes sociales',
+    addressLabel: 'Dirección',
+    emailLabel: 'Correo',
 }
